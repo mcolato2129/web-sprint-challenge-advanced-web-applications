@@ -3,14 +3,16 @@ import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
 
 export default function Articles(props) {
+  const { getArticles } = props
+  console.log(getArticles)
   // ✨ where are my props? Destructure them here
 
   // ✨ implement conditional logic: if no token exists
   // we should render a Navigate to login screen (React Router v.6)
 
   useEffect(() => {
-    // ✨ grab the articles here, on first render only
-  })
+    getArticles() // ✨ grab the articles here, on first render only
+  },[])
 
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
