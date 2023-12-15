@@ -85,12 +85,12 @@ export default function App() {
     console.log('get triggered')
     axiosWithAuth().get(articlesUrl)
       .then(res => {
-        console.log('getArticles:', res)
         setArticles(res.data.articles)
         setMessage(res.data.message)
       })
       .catch(err => {
         console.error(err)
+        redirectToLogin()
       })
       .finally(() =>
         setSpinnerOn(false)
@@ -118,7 +118,7 @@ export default function App() {
     // ✨ fix the JSX: `Spinner`, `Message`, `LoginForm`, `ArticleForm` and `Articles` expect props ❗
     <>
       <Spinner on={spinnerOn}/>
-      <Message />
+      <Message message={message}/>
       <button id="logout" onClick={logout}>Logout from app</button>
       <div id="wrapper" style={{ opacity: spinnerOn ? "0.25" : "1" }}> {/* <-- do not change this line */}
         <h1>Advanced Web Applications</h1>
