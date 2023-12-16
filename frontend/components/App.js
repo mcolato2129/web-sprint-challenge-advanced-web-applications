@@ -32,7 +32,7 @@ export default function App() {
     // If a token is in local storage it should be removed,
     if (localStorage.getItem('token')) {
       localStorage.removeItem('token')
-      setMessage("Goodbye")
+      setMessage("Goodbye!")
     }
     redirectToLogin()
     // and a message saying "Goodbye!" should be set in its proper state.
@@ -50,7 +50,7 @@ export default function App() {
     setMessage('')
     setSpinnerOn(true)
 
-    axios.post(loginUrl, 
+    axios.post(loginUrl,
       {
         username: username,
         password: password
@@ -117,8 +117,8 @@ export default function App() {
   return (
     // ✨ fix the JSX: `Spinner`, `Message`, `LoginForm`, `ArticleForm` and `Articles` expect props ❗
     <>
-      <Spinner on={spinnerOn}/>
-      <Message message={message}/>
+      <Spinner on={spinnerOn} />
+      <Message message={message} />
       <button id="logout" onClick={logout}>Logout from app</button>
       <div id="wrapper" style={{ opacity: spinnerOn ? "0.25" : "1" }}> {/* <-- do not change this line */}
         <h1>Advanced Web Applications</h1>
@@ -130,8 +130,11 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login} logout={logout} />} />
           <Route path="articles" element={
             <>
-              <ArticleForm />
-              <Articles getArticles={getArticles} />
+              <ArticleForm getArticles={getArticles}/>
+              <Articles 
+              articles={articles}
+              getArticles={getArticles} 
+              />
             </>
           } />
         </Routes>
