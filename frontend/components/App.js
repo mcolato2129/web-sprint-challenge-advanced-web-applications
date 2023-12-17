@@ -73,7 +73,6 @@ export default function App() {
   const getArticles = () => {
     // ✨ implement
     // We should flush the message state, turn on the spinner
-
     // and launch an authenticated request to the proper endpoint.
     // On success, we should set the articles in their proper state and
     // put the server success message in its proper state.
@@ -143,7 +142,11 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login} logout={logout} />} />
           <Route path="articles" element={
             <>
-              <ArticleForm getArticles={getArticles} />
+              <ArticleForm 
+              getArticles={getArticles} 
+              postArticle={postArticle}
+              currentArticleId={currentArticleId}
+              />
               <Articles
                 articles={articles}
                 getArticles={getArticles}
