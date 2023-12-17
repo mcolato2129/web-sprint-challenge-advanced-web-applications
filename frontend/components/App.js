@@ -82,7 +82,6 @@ export default function App() {
     // Don't forget to turn off the spinner!
     setSpinnerOn(true)
     setMessage('');
-    console.log('get triggered')
     axiosWithAuth().get(articlesUrl)
       .then(res => {
         setArticles(res.data.articles)
@@ -99,6 +98,20 @@ export default function App() {
 
   const postArticle = article => {
     // ✨ implement
+    console.log("hello", )
+    setSpinnerOn(true)
+    setMessage('')
+    axios.post(articlesUrl, article)
+      .then(res => {
+        setCurrentArticleId(res.data.currentArticleId)
+        setMessage(res.data.message)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      .finally(() =>
+        setSpinnerOn(false)
+      )
     // The flow is very similar to the `getArticles` function.
     // You'll know what to do! Use log statements or breakpoints
     // to inspect the response from the server.
@@ -130,10 +143,10 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login} logout={logout} />} />
           <Route path="articles" element={
             <>
-              <ArticleForm getArticles={getArticles}/>
-              <Articles 
-              articles={articles}
-              getArticles={getArticles} 
+              <ArticleForm getArticles={getArticles} />
+              <Articles
+                articles={articles}
+                getArticles={getArticles}
               />
             </>
           } />
