@@ -100,7 +100,7 @@ export default function App() {
     console.log("hello", )
     setSpinnerOn(true)
     setMessage('')
-    axios.post(articlesUrl, article)
+    axiosWithAuth().post(articlesUrl, article)
       .then(res => {
         setCurrentArticleId(res.data.currentArticleId)
         setMessage(res.data.message)
