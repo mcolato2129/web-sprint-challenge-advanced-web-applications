@@ -119,6 +119,9 @@ export default function App() {
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
     // You got this!
+    axios.put(articlesUrl, article_id, article)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   const deleteArticle = article_id => {
@@ -145,6 +148,7 @@ export default function App() {
               <ArticleForm 
               getArticles={getArticles} 
               postArticle={postArticle}
+              updateArticle={updateArticle}
               currentArticleId={currentArticleId}
               />
               <Articles

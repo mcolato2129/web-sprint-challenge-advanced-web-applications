@@ -7,7 +7,7 @@ const initialFormValues = { title: '', text: '', topic: '' }
 export default function ArticleForm(props) {
   const [values, setValues] = useState(initialFormValues)
   // ✨ where are my props? Destructure them here
-  const { getArticles, postArticle, currentArticleId} = props
+  const { getArticles, postArticle, currentArticleId, updateArticle} = props
 
   console.log(props)
 
