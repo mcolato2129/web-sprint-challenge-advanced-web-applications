@@ -120,7 +120,9 @@ export default function App() {
     // ✨ implement
     // You got this!
     axios.put(articlesUrl, article_id, article)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+    })
     .catch(err => console.log(err))
   }
 
