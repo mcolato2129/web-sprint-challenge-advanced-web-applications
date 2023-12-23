@@ -88,6 +88,13 @@ export default function ArticleForm(props) {
   )
 }
 
+// Line 84 have to write something like an if statement. Ex 'If this button does not have this hide this and IF it does Have "This" then show it. Check back in previous lessons to figure out how this is done.
+
+
+
+
+
+
 // 🔥 No touchy: LoginForm expects the following props exactly:
 ArticleForm.propTypes = {
   postArticle: PT.func.isRequired,
