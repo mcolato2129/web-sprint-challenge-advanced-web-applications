@@ -152,6 +152,7 @@ export default function App() {
               postArticle={postArticle}
               updateArticle={updateArticle}
               setCurrentArticleId={setCurrentArticleId}
+              currentArticleId={currentArticleId}
               />
               <Articles
                 articles={articles}
