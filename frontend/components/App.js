@@ -151,7 +151,7 @@ export default function App() {
               getArticles={getArticles} 
               postArticle={postArticle}
               updateArticle={updateArticle}
-              currentArticleId={currentArticleId}
+              setCurrentArticleId={setCurrentArticleId}
               />
               <Articles
                 articles={articles}
