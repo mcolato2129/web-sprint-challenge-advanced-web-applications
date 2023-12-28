@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
 
 export default function Articles(props) {
-  const { getArticles, articles } = props
+  const { getArticles, articles, setCurrentArticleId, currentArticleId } = props
   console.log(getArticles)
   // ✨ where are my props? Destructure them here
 
@@ -11,7 +11,7 @@ export default function Articles(props) {
   // we should render a Navigate to login screen (React Router v.6)
 
   useEffect(() => {
-    getArticles(articles) // ✨ grab the articles here, on first render only
+    getArticles() // ✨ grab the articles here, on first render only
   },[])
 
   return (

@@ -102,11 +102,13 @@ export default function App() {
     setMessage('')
     axiosWithAuth().post(articlesUrl, article)
       .then(res => {
-        setCurrentArticleId(res.data.currentArticleId)
+        setArticles(articles => {
+          articles.concat(res.data.article)
+        })
         setMessage(res.data.message)
       })
       .catch(err => {
-        console.log(err)
+        console.log(err)  
       })
       .finally(() =>
         setSpinnerOn(false)
@@ -157,6 +159,8 @@ export default function App() {
               <Articles
                 articles={articles}
                 getArticles={getArticles}
+                setCurrentArticleId={setCurrentArticleId}
+                currentArticleId={currentArticleId}
               />
             </>
           } />

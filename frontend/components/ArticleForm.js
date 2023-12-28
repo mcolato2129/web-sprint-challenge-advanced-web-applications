@@ -37,9 +37,15 @@ export default function ArticleForm(props) {
     evt.preventDefault()
     // ✨ implement
 
-    const article = {title: values.title, text: values.text, topic: values.topic}
-    currentArticle ? updateArticle({article, article_id: currentArticle.article_id}): postArticle(article)
-    setCurrentArticleId() 
+    // const article = {title: values.title, text: values.text, topic: values.topic}
+    // currentArticle ? updateArticle({article, article_id: currentArticle.article_id}): postArticle(article)
+    // setCurrentArticleId() 
+    // setValues(initialFormValues)
+    if(currentArticle){
+      updateArticle({article: values, article_id: values.article_id})
+    } else{
+      postArticle(values)
+    }
     setValues(initialFormValues)
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
