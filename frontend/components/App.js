@@ -161,6 +161,8 @@ export default function App() {
                 getArticles={getArticles}
                 setCurrentArticleId={setCurrentArticleId}
                 currentArticleId={currentArticleId}
+                redirectToLogin={redirectToLogin}
+                redirectToArticles={redirectToArticles}
               />
             </>
           } />
