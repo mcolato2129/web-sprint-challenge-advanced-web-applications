@@ -130,6 +130,16 @@ export default function App() {
 
   const deleteArticle = article_id => {
     // ✨ implement
+    setSpinnerOn(true)
+    setMessage('')
+    axios.delete(articlesUrl, article_id)
+    .then(res => {
+      setMessage(res.data.message)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    .finally(() => setSpinnerOn(false))
   }
 
 
@@ -162,7 +172,7 @@ export default function App() {
                 setCurrentArticleId={setCurrentArticleId}
                 currentArticleId={currentArticleId}
                 redirectToLogin={redirectToLogin}
-                redirectToArticles={redirectToArticles}
+                deleteArticle={deleteArticle}
               />
             </>
           } />

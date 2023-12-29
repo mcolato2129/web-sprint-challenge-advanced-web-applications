@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
 
 export default function Articles(props) {
-  const { getArticles, articles, setCurrentArticleId, currentArticleId, redirectToArticles, redirectToLogin } = props
+  const { getArticles, articles, setCurrentArticleId, currentArticleId, deleteArticle, redirectToLogin } = props
   console.log(getArticles)
   // ✨ where are my props? Destructure them here
 
@@ -17,6 +17,21 @@ export default function Articles(props) {
     getArticles()
     } // ✨ grab the articles here, on first render only
   },[])
+
+
+  const isDisabled = () => {
+    if(!currentArticleId){
+      false
+    }else{ 
+      true 
+    }
+  } 
+
+const onClick = () => {
+  setCurrentArticleId(deleteArticle)
+}
+
+
 
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
@@ -35,8 +50,8 @@ export default function Articles(props) {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={true} onClick={Function.prototype}>Edit</button>
-                  <button disabled={true} onClick={Function.prototype}>Delete</button>
+                  <button disabled={isDisabled} onClick={Function.prototype}>Edit</button>
+                  <button disabled={isDisabled} onClick={Function.prototype}>Delete</button>
                 </div>
               </div>
             )
