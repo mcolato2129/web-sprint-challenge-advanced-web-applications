@@ -9,27 +9,15 @@ export default function Articles(props) {
 
   // ✨ implement conditional logic: if no token exists
   // we should render a Navigate to login screen (React Router v.6)
+  if(!localStorage.getItem('token')){
+    redirectToLogin()
+  }
 
   useEffect(() => {
-    if(!localStorage.getItem('token')){
-      redirectToLogin
-    }  else{
     getArticles()
-    } // ✨ grab the articles here, on first render only
+    // ✨ grab the articles here, on first render only
   },[])
 
-
-  // const isDisabled = () => {
-  //   if(!currentArticleId){
-  //     false
-  //   }else{ 
-  //     true 
-  //   }
-  // } 
-
-const remove = () => {
-  setCurrentArticleId(deleteArticle)
-}
 
 
 
@@ -50,8 +38,8 @@ const remove = () => {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={false} onClick={Function.prototype}>Edit</button>
-                  <button disabled={false} onClick={remove}>Delete</button>
+                  <button disabled={currentArticleId ? true : false} onClick={() => setCurrentArticleId(art.article_id)}>Edit</button>
+                  <button disabled={currentArticleId ? true : false} onClick={() => deleteArticle(art.article_id)}>Delete</button>
                 </div>
               </div>
             )

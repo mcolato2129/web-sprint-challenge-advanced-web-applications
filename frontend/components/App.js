@@ -124,8 +124,8 @@ export default function App() {
     axiosWithAuth().put(articlesUrl, article_id, article)
     .then(res => {
       console.log(res)
-      setCurrentArticleId(article_id)
-      setArticles(article)
+      setCurrentArticleId(res.data.article_id)
+      setArticles(res.data.article)
     })
     .catch(err => console.log(err))
   }
