@@ -19,13 +19,13 @@ export default function Articles(props) {
   },[])
 
 
-  const isDisabled = () => {
-    if(!currentArticleId){
-      false
-    }else{ 
-      true 
-    }
-  } 
+  // const isDisabled = () => {
+  //   if(!currentArticleId){
+  //     false
+  //   }else{ 
+  //     true 
+  //   }
+  // } 
 
 const remove = () => {
   setCurrentArticleId(deleteArticle)
@@ -50,8 +50,8 @@ const remove = () => {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={isDisabled} onClick={Function.prototype}>Edit</button>
-                  <button disabled={isDisabled} onClick={remove}>Delete</button>
+                  <button disabled={false} onClick={Function.prototype}>Edit</button>
+                  <button disabled={false} onClick={remove}>Delete</button>
                 </div>
               </div>
             )

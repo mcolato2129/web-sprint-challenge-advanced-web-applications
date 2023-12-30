@@ -124,6 +124,8 @@ export default function App() {
     axiosWithAuth().put(articlesUrl, article_id, article)
     .then(res => {
       console.log(res)
+      setCurrentArticleId(article_id)
+      setArticles(article)
     })
     .catch(err => console.log(err))
   }
@@ -132,13 +134,13 @@ export default function App() {
     // ✨ implement
     setSpinnerOn(true)
     setMessage('')
-    axiosWithAuth().delete(articlesUrl, article_id)
+    axiosWithAuth().delete(`http://localhost:9000/api/articles/${article_id}`)
     .then(res => {
       setMessage(res.data.message)
-      setCurrentArticleId(article_id)
     })
     .catch(err => {
       console.log(err)
+      setMessage(err.message)
     })
     .finally(() => setSpinnerOn(false))
   }
