@@ -121,7 +121,7 @@ export default function App() {
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
     // You got this!
-    axios.put(articlesUrl, article_id, article)
+    axiosWithAuth().put(articlesUrl, article_id, article)
     .then(res => {
       console.log(res)
     })
@@ -132,9 +132,10 @@ export default function App() {
     // ✨ implement
     setSpinnerOn(true)
     setMessage('')
-    axios.delete(articlesUrl, article_id)
+    axiosWithAuth().delete(articlesUrl, article_id)
     .then(res => {
       setMessage(res.data.message)
+      setCurrentArticleId(article_id)
     })
     .catch(err => {
       console.log(err)

@@ -27,7 +27,7 @@ export default function Articles(props) {
     }
   } 
 
-const onClick = () => {
+const remove = () => {
   setCurrentArticleId(deleteArticle)
 }
 
@@ -51,7 +51,7 @@ const onClick = () => {
                 </div>
                 <div>
                   <button disabled={isDisabled} onClick={Function.prototype}>Edit</button>
-                  <button disabled={isDisabled} onClick={Function.prototype}>Delete</button>
+                  <button disabled={isDisabled} onClick={remove}>Delete</button>
                 </div>
               </div>
             )
