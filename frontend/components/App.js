@@ -123,7 +123,7 @@ export default function App() {
     axiosWithAuth().put(articlesUrl+ '/' + article_id, article)
     .then(res => {
       console.log(res)
-      getArticles()
+      setArticles(articles.map(art => article_id != art.article_id ?  art : article ))
       setMessage(res.data.message)
     })
     .catch(err => console.log(err))
