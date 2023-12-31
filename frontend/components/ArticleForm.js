@@ -7,16 +7,20 @@ const initialFormValues = { title: '', text: '', topic: '' }
 export default function ArticleForm(props) {
   const [values, setValues] = useState(initialFormValues)
   // ✨ where are my props? Destructure them here
-  const { setCurrentArticleId, postArticle, currentArticle, updateArticle } = props
+  const { setCurrentArticleId, postArticle, currentArticleId, updateArticle, articles } = props
 
   console.log(props)
 
   useEffect(() => {
-    if (currentArticle) {
-      setValues({
-        title: currentArticle.title,
-        text: currentArticle.text,
-        topic: currentArticle.topic,
+    if (currentArticleId) {
+      articles.forEach(art => {
+        if(art.article_id === currentArticleId){
+          setValues({
+            title: art.title,
+            text: art.text,
+            topic: art.topic,
+          })
+        }
       })
     }
     else {
@@ -26,7 +30,7 @@ export default function ArticleForm(props) {
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
     // if it's truthy, we should set its title, text and topic into the corresponding
     // values of the form. If it's not, we should reset the form back to initial values.
-  }, [currentArticle])
+  }, [currentArticleId])
 
   const onChange = evt => {
     const { id, value } = evt.target
@@ -38,7 +42,7 @@ export default function ArticleForm(props) {
     // ✨ implement
 
     const article = { title: values.title, text: values.text, topic: values.topic }
-    currentArticle ? updateArticle({ article, article_id: currentArticle.article_id }) : postArticle(article)
+    currentArticleId ? updateArticle({ article, article_id: currentArticleId }) : postArticle(article)
     setCurrentArticleId()
     setValues(initialFormValues)
     // if(currentArticle){
@@ -65,7 +69,7 @@ export default function ArticleForm(props) {
     // ✨ fix the JSX: make the heading display either "Edit" or "Create"
     // and replace Function.prototype with the correct function
     <form id="form" onSubmit={onSubmit}>
-      {currentArticle ? <h2> Create Article </h2> : <h2> Edit Article </h2>}
+      {currentArticleId ? <h2> Edit Article </h2> : <h2> Create Article </h2>}
       <input
         maxLength={50}
         onChange={onChange}
@@ -88,7 +92,7 @@ export default function ArticleForm(props) {
       </select>
       <div className="button-group">
         <button disabled={isDisabled()} id="submitArticle" >Submit</button>
-        {currentArticle && <button onClick={Function.prototype}>Cancel edit</button> }
+        {currentArticleId && <button onClick={Function.prototype}>Cancel edit</button> }
       </div>
     </form>
   )
