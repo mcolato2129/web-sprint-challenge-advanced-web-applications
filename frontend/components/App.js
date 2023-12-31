@@ -102,9 +102,8 @@ export default function App() {
     setMessage('')
     axiosWithAuth().post(articlesUrl, article)
       .then(res => {
-        setArticles(articles => {
-          articles.concat(res.data.article)
-        })
+        setArticles(articles => articles.concat(res.data.article)
+        )
         setMessage(res.data.message)
       })
       .catch(err => {
@@ -121,11 +120,11 @@ export default function App() {
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
     // You got this!
-    axiosWithAuth().put(articlesUrl, article_id, article)
+    axiosWithAuth().put(articlesUrl+ '/' + article_id, article)
     .then(res => {
       console.log(res)
-      setCurrentArticleId(res.data.article_id)
-      setArticles(res.data.article)
+      getArticles()
+      setMessage(res.data.message)
     })
     .catch(err => console.log(err))
   }
@@ -136,7 +135,9 @@ export default function App() {
     setMessage('')
     axiosWithAuth().delete(`http://localhost:9000/api/articles/${article_id}`)
     .then(res => {
-      setMessage(res.data.message)
+      console.log(res)
+    setArticles(articles.filter(art => article_id != art.article_id))
+    setMessage(res.data.message)
     })
     .catch(err => {
       console.log(err)
