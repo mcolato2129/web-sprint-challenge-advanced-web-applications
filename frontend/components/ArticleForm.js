@@ -87,13 +87,14 @@ export default function ArticleForm(props) {
         <option value="Node">Node</option>
       </select>
       <div className="button-group">
-        <button disabled={isDisabled()} id="submitArticle" onClick={() => setCurrentArticleId()}>Submit</button>
+        <button disabled={isDisabled()} id="submitArticle" >Submit</button>
         {currentArticle && <button onClick={Function.prototype}>Cancel edit</button> }
       </div>
     </form>
   )
 }
 
+// onClick={() => setCurrentArticleId()}
 // Line 84 have to write something like an if statement. Ex 'If this button does not have this hide this and IF it does Have "This" then show it. Check back in previous lessons to figure out how this is done.
 
 
